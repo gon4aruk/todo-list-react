@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import * as tasksActions from '../tasks.actions';
 
 class CreateTaskInput extends Component {
   state = {
@@ -11,7 +13,7 @@ class CreateTaskInput extends Component {
   };
 
   handleCreate = () => {
-    this.props.onCreate(this.state.value);
+    this.props.createTask(this.state.value);
     this.setState({ value: '' });
   };
 
@@ -33,7 +35,11 @@ class CreateTaskInput extends Component {
 }
 
 CreateTaskInput.propTypes = {
-  onCreate: PropTypes.func.isRequired,
+  createTask: PropTypes.func.isRequired,
 };
 
-export default CreateTaskInput;
+const mapDispatch = {
+  createTask: tasksActions.createTask,
+};
+
+export default connect(null, mapDispatch)(CreateTaskInput);

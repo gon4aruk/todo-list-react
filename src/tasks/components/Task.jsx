@@ -1,6 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import * as tasksActions from '../tasks.actions';
 
 const Task = ({ id, done, text, onChangeStatus, onDelete }) => {
   return (
@@ -29,4 +31,9 @@ Task.defaultProps = {
   done: false,
 };
 
-export default Task;
+const mapDispatch = {
+  onChangeStatus: tasksActions.updateTask,
+  onDelete: tasksActions.deleteTask,
+};
+
+export default connect(null, mapDispatch)(Task);
