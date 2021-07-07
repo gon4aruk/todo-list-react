@@ -1,4 +1,4 @@
-## Calendar-react
+## Todo list project with react
 
 The site is available at https://inspiring-mcclintock-ccf6c5.netlify.app/
 
